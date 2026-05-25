@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    --primary: 352 75% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 8%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 8%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 352 75% 44%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --kaymo-red: 352 75% 44%;
+    --kaymo-dark: 0 0% 8%;
+    --kaymo-gray: 0 0% 45%;
+    --kaymo-light: 0 0% 97%;
+    
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.08);
+    --shadow-elevated: 0 12px 40px -8px hsl(0 0% 0% / 0.15);
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 96%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 352 75% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 96%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 96%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 352 75% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-foreground/80 hover:text-primary transition-colors duration-200 font-medium text-sm;
+  }
+  
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold leading-tight tracking-tight;
+  }
+  
+  .heading-md {
+    @apply text-xl md:text-2xl font-semibold leading-tight;
+  }
+  
+  .body-lg {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+  
+  .service-card {
+    @apply bg-card border border-border rounded-xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  .stat-card {
+    @apply bg-accent text-accent-foreground rounded-xl p-6 md:p-8 text-center;
+  }
+}
