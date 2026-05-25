@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MapPin, Calendar, ArrowRight, Construction, Droplets } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
+import SmartImage from "@/components/SmartImage";
 import { projects } from "@/data/projects";
 import projectsHeader from "@/assets/headers/projects-header.jpg";
 
@@ -96,9 +97,10 @@ const ProjectsPage = () => {
                 className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-card transition-all duration-300"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <SmartImage
                     src={project.images[0]}
                     alt={project.title}
+                    containerClassName="w-full h-full"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-accent/60 to-transparent" />

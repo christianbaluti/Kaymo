@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Clock, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+import SmartImage from "@/components/SmartImage";
 import heroImage from "@/assets/headers/hero-header.jpg";
 
 const Hero = () => {
@@ -8,9 +9,12 @@ const Hero = () => {
     <section className="relative min-h-[85vh] flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <SmartImage
           src={heroImage}
           alt="Road construction in South Africa"
+          loading="eager"
+          fetchPriority="high"
+          containerClassName="w-full h-full"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-accent/95 via-accent/80 to-accent/40" />

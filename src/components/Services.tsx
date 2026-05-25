@@ -1,6 +1,7 @@
 import { Construction, Droplets, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import SmartImage from "@/components/SmartImage";
 import roadImage from "@/assets/road.jpeg";
 import waterImage from "@/assets/water.jpeg";
 
@@ -44,9 +45,10 @@ const Services = () => {
           {/* Road Construction Card */}
           <div className="service-card group overflow-hidden">
             <div className="relative h-48 -mx-6 -mt-6 md:-mx-8 md:-mt-8 mb-6 overflow-hidden">
-              <img
+              <SmartImage
                 src={roadImage}
                 alt="Road Construction"
+                containerClassName="w-full h-full"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-accent/60 to-transparent" />
@@ -82,9 +84,10 @@ const Services = () => {
           {/* Water Infrastructure Card */}
           <div className="service-card group overflow-hidden">
             <div className="relative h-48 -mx-6 -mt-6 md:-mx-8 md:-mt-8 mb-6 overflow-hidden">
-              <img
+              <SmartImage
                 src={waterImage}
                 alt="Water Infrastructure"
+                containerClassName="w-full h-full"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-accent/60 to-transparent" />

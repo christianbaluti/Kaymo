@@ -5,6 +5,7 @@ import {
   CheckCircle, AlertTriangle, Award, ArrowLeft, ArrowRight 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SmartImage from "@/components/SmartImage";
 import { getProjectById, projects } from "@/data/projects";
 
 const ProjectDetailPage = () => {
@@ -24,9 +25,12 @@ const ProjectDetailPage = () => {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-end pt-20">
         <div className="absolute inset-0 z-0">
-          <img
+          <SmartImage
             src={project.images[0]}
             alt={project.title}
+            loading="eager"
+            fetchPriority="high"
+            containerClassName="w-full h-full"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-accent via-accent/70 to-transparent" />
@@ -127,11 +131,12 @@ const ProjectDetailPage = () => {
                 <h2 className="heading-lg text-foreground mb-4">Project Gallery</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {project.images.map((image, index) => (
-                    <img
+                    <SmartImage
                       key={index}
                       src={image}
                       alt={`${project.title} - Image ${index + 1}`}
-                      className="w-full h-48 object-cover rounded-xl"
+                      containerClassName="w-full h-48 rounded-xl"
+                      className="w-full h-full object-cover"
                     />
                   ))}
                 </div>

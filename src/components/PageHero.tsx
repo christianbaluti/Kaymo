@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SmartImage from "@/components/SmartImage";
 
 interface PageHeroProps {
   title: string;
@@ -12,9 +13,12 @@ const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         {backgroundImage ? (
-          <img
+          <SmartImage
             src={backgroundImage}
             alt={title}
+            loading="eager"
+            fetchPriority="high"
+            containerClassName="w-full h-full"
             className="w-full h-full object-cover"
           />
         ) : (

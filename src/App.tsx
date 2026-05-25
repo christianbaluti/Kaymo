@@ -20,12 +20,17 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
-  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+  const [loadedPath, setLoadedPath] = useState(location.pathname);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const isLoading = isInitialLoad || loadedPath !== location.pathname;
 
   useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => setIsLoading(false), 1000);
+    const timer = setTimeout(() => {
+      setLoadedPath(location.pathname);
+      setIsInitialLoad(false);
+    }, 1000);
+
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
@@ -42,17 +47,19 @@ const AppRoutes = () => {
       <ScrollToTop />
       <Navbar />
       <PageWrapper>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:id" element={<ProjectDetailPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:id" element={<ProjectDetailPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </>
       </PageWrapper>
-      <Footer />
     </>
   );
 };

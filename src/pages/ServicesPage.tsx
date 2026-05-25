@@ -3,6 +3,7 @@ import { Construction, Droplets, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
+import SmartImage from "@/components/SmartImage";
 import roadImage from "@/assets/road4.jpeg";
 import waterImage from "@/assets/water2.jpg";
 import servicesHeader from "@/assets/headers/services-header.jpg";
@@ -121,10 +122,11 @@ const ServicesPage = () => {
               </Button>
             </div>
             <div className="relative">
-              <img
+              <SmartImage
                 src={roadImage}
                 alt="Road Construction"
-                className="rounded-2xl shadow-card w-full"
+                containerClassName="rounded-2xl shadow-card w-full"
+                className="w-full"
               />
             </div>
           </div>
@@ -163,10 +165,11 @@ const ServicesPage = () => {
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
             <div className="order-2 lg:order-1">
-              <img
+              <SmartImage
                 src={waterImage}
                 alt="Water Infrastructure"
-                className="rounded-2xl shadow-card w-full"
+                containerClassName="rounded-2xl shadow-card w-full"
+                className="w-full"
               />
             </div>
             <div className="order-1 lg:order-2">
