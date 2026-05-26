@@ -35,9 +35,9 @@ const Hero = () => {
           >
             <span className="text-2xl">From</span>
             <br />
-            <span className="text-primary">Roads to Sewer.</span>
+            <span className="text-primary">Roads to Sewer Systems</span>
             <br />
-            <span  className="text-2xl">Systems</span> <span className="text-primary text-2xl"> We Deliver</span>
+            <span  className="text-2xl">We Deliver</span> <span className="text-primary text-2xl"> </span>
           </h1>
 
           <p
