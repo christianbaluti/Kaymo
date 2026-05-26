@@ -13,20 +13,25 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-              About Us
+              Business Philosophy
             </span>
             <h2 className="heading-lg text-foreground mt-3 mb-6">
-              From Roads to Sewer Systems. We deliver.
+              Inspired by Ubuntu & Botho
             </h2>
             <p className="body-lg mb-6">
-              Kaymo Tech is a South African civil engineering contractor
-              delivering reliable road construction, rehabilitation,
-              and water & sewer infrastructure solutions across South Africa.
+              Kaymo Tech is a proudly African company, inspired by
+              humanity and respect towards others, where togetherness
+              and teamwork are our fundamental principles. We work
+              closely with our partners and stakeholders, knowing
+              that together we can offer so much more.
             </p>
             <p className="text-muted-foreground mb-8">
-              Built on technical expertise, compliance, and quality
-              workmanship, we partner with public and private sector
-              clients to deliver infrastructure that lasts.
+              We are committed to delivering quality infrastructure
+              solutions with integrity, professionalism, and long-term
+              impact. Through innovation, accountability, and excellence,
+              we strive to build sustainable roads, sewer systems, and
+              wastewater infrastructure that improve communities and
+              support economic growth across South Africa.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4">

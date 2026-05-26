@@ -83,25 +83,27 @@ const AboutPage = () => {
                 Our Story
               </span>
               <h2 className="heading-lg text-foreground mt-3 mb-6">
-                A Trusted Civil Engineering Partner Since 2020
+                Building Infrastructure That Creates Lasting Impact Since 2020
               </h2>
               <p className="body-lg mb-6">
-                Established in 2020, Kaymo Tech is a South African civil engineering
-                company specialising in road construction, rehabilitation, and water
-                & sewer infrastructure. As a division of Kaymo Group, we bring
-                technical expertise and a commitment to excellence to every project.
+                Established in 2020, Kaymo Tech is a proudly South African civil
+                engineering company specializing in road construction, water &
+                sewer infrastructure, and wastewater treatment works. As part of
+                Kaymo Group, we are committed to delivering infrastructure solutions
+                that improve communities, support economic growth, and create long-term value.
               </p>
               <p className="text-muted-foreground mb-6">
-                Our experienced management team, skilled workforce, and reliable
-                plant enable us to successfully deliver small to medium-sized civil
-                works while positioning the company for strategic growth. We execute
-                projects in accordance with CIDB, SANRAL, and relevant SANS
-                specifications.
+                Backed by an experienced management team, skilled workforce, and reliable
+                plant, we deliver quality infrastructure projects with professionalism,
+                safety, and precision. Our operations are guided by CIDB, SANRAL, and
+                relevant SANS specifications, ensuring every project meets the highest
+                industry standards.
               </p>
               <p className="text-muted-foreground">
-                With a strong focus on safety, quality, and timely delivery, we serve
-                both public and private sector clients across South Africa, building
-                infrastructure that empowers communities for generations.
+                From roads and stormwater systems to sewer networks and wastewater
+                treatment infrastructure, Kaymo Tech continues to grow as a trusted
+                infrastructure partner across South Africa — driven by excellence,
+                innovation, and a passion for building the future.
               </p>
             </motion.div>
 

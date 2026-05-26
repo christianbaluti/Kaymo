@@ -29,10 +29,19 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     const timer = setTimeout(() => {
       setLoadedPath(location.pathname);
       setIsInitialLoad(false);
+
+      if (location.hash) {
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => {
+            const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+            target?.scrollIntoView({ block: "start", behavior: "auto" });
+          });
+        });
+      }
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, [location.hash, location.pathname]);
 
   return (
     <AnimatePresence mode="wait">

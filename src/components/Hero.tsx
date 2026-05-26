@@ -33,9 +33,11 @@ const Hero = () => {
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-accent-foreground mb-4 animate-fade-in leading-tight"
             style={{ animationDelay: "0.1s" }}
           >
-            Building Roads.
+            <span className="text-2xl">From</span>
             <br />
-            <span className="text-primary">Delivering Infrastructure.</span>
+            <span className="text-primary">Roads to Sewer.</span>
+            <br />
+            <span  className="text-2xl">Systems</span> <span className="text-primary text-2xl"> We Deliver</span>
           </h1>
 
           <p

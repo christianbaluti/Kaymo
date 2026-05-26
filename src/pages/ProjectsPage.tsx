@@ -5,21 +5,51 @@ import { MapPin, Calendar, ArrowRight, Construction, Droplets } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import SmartImage from "@/components/SmartImage";
-import { projects } from "@/data/projects";
+import { projects, type ProjectCategory } from "@/data/projects";
 import projectsHeader from "@/assets/headers/projects-header.jpg";
+
+type ProjectFilter = "all" | ProjectCategory;
+
+const projectCategoryMeta: Record<ProjectCategory, {
+  label: string;
+  shortLabel: string;
+  icon: typeof Construction;
+  className: string;
+}> = {
+  road: {
+    label: "Road Construction",
+    shortLabel: "Road",
+    icon: Construction,
+    className: "bg-primary text-primary-foreground",
+  },
+  water: {
+    label: "Water & Sewer",
+    shortLabel: "Water",
+    icon: Droplets,
+    className: "bg-blue-600 text-white",
+  },
+  "waste-water-treatment": {
+    label: "Waste Water Treatment",
+    shortLabel: "Waste Water",
+    icon: Droplets,
+    className: "bg-cyan-700 text-white",
+  },
+};
 
 const ProjectsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filter, setFilter] = useState<"all" | "road" | "water">("all");
+  const [filter, setFilter] = useState<ProjectFilter>("all");
 
   useEffect(() => {
     const category = searchParams.get("category");
-    if (category === "road" || category === "water") {
+    if (category === "road" || category === "water" || category === "waste-water-treatment") {
       setFilter(category);
+    } else {
+      setFilter("all");
     }
   }, [searchParams]);
 
-  const handleFilterChange = (newFilter: "all" | "road" | "water") => {
+  const handleFilterChange = (newFilter: ProjectFilter) => {
     setFilter(newFilter);
     if (newFilter === "all") {
       searchParams.delete("category");
@@ -50,7 +80,7 @@ const ProjectsPage = () => {
     <main>
       <PageHero
         title="Our Projects"
-        subtitle="Explore our portfolio of completed road construction and water infrastructure projects."
+        subtitle="Explore our portfolio of completed road construction, water infrastructure, and wastewater treatment works projects."
         backgroundImage={projectsHeader}
       />
 
@@ -80,6 +110,14 @@ const ProjectsPage = () => {
               <Droplets className="h-4 w-4" />
               Water & Sewer
             </Button>
+            <Button
+              variant={filter === "waste-water-treatment" ? "default" : "outline"}
+              onClick={() => handleFilterChange("waste-water-treatment")}
+              className="flex items-center gap-2"
+            >
+              <Droplets className="h-4 w-4" />
+              Waste Water Treatment
+            </Button>
           </div>
 
           {/* Projects Grid */}
@@ -91,66 +129,65 @@ const ProjectsPage = () => {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-card transition-all duration-300"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <SmartImage
-                    src={project.images[0]}
-                    alt={project.title}
-                    containerClassName="w-full h-full"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-accent/60 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${
-                      project.category === "road" 
-                        ? "bg-primary text-primary-foreground" 
-                        : "bg-blue-600 text-white"
-                    }`}>
-                      {project.category === "road" ? (
-                        <Construction className="h-3 w-3" />
-                      ) : (
-                        <Droplets className="h-3 w-3" />
-                      )}
-                      {project.category === "road" ? "Road" : "Water"}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-lg font-bold text-white line-clamp-2">
-                      {project.title}
-                    </h3>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <span className="flex items-center gap-1.5">
-                      <MapPin className="h-4 w-4" />
-                      {project.location}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="h-4 w-4" />
-                      {project.year}
-                    </span>
-                  </div>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-primary">
-                      {project.value ?? `Completion ${project.estimatedCompletion}`}
-                    </span>
-                    <Button variant="ghost" size="sm" asChild className="group/btn">
-                      <Link to={`/projects/${project.id}`}>
-                        View Details
-                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
+              (() => {
+                const meta = projectCategoryMeta[project.category];
+                const CategoryIcon = meta.icon;
+
+                return (
+                  <motion.div
+                    key={project.id}
+                    variants={itemVariants}
+                    className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-card transition-all duration-300"
+                  >
+                    <div className="relative h-48 overflow-hidden">
+                      <SmartImage
+                        src={project.images[0]}
+                        alt={project.title}
+                        containerClassName="w-full h-full"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-accent/60 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${meta.className}`}>
+                          <CategoryIcon className="h-3 w-3" />
+                          {meta.shortLabel}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-lg font-bold text-white line-clamp-2">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                        <span className="flex items-center gap-1.5">
+                          <MapPin className="h-4 w-4" />
+                          {project.location}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <Calendar className="h-4 w-4" />
+                          {project.year}
+                        </span>
+                      </div>
+                      <p className="text-muted-foreground mb-4 line-clamp-2">
+                        {project.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-primary">
+                          {project.value ?? `Completion ${project.estimatedCompletion}`}
+                        </span>
+                        <Button variant="ghost" size="sm" asChild className="group/btn">
+                          <Link to={`/projects/${project.id}`}>
+                            View Details
+                            <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })()
             ))}
           </motion.div>
 

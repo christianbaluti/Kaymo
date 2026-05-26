@@ -25,10 +25,12 @@ import robertsonWwtw3 from "@/assets/projects/WhatsApp Image 2026-05-25 at 19.56
 import robertsonWwtw4 from "@/assets/projects/WhatsApp Image 2026-05-25 at 19.56.25 (2).jpeg";
 import robertsonWwtw5 from "@/assets/projects/WhatsApp Image 2026-05-25 at 19.56.25.jpeg";
 
+export type ProjectCategory = "road" | "water" | "waste-water-treatment";
+
 export interface Project {
   id: string;
   title: string;
-  category: "road" | "water";
+  category: ProjectCategory;
   location: string;
   year: string;
   client?: string;
@@ -171,7 +173,7 @@ export const projects: Project[] = [
   {
     id: "robertson-wastewater-treatment-works-upgrade",
     title: "Robertson Wastewater Treatment Works Upgrade",
-    category: "water",
+    category: "waste-water-treatment",
     location: "Robertson, Langeberg Municipality, Western Cape",
     year: "2025",
     mainContractor: "Hiload Inyanga Construction Company (Pty) Ltd",
@@ -210,6 +212,6 @@ export const getFeaturedProjects = (): Project[] => {
   return projects.filter((project) => project.featured);
 };
 
-export const getProjectsByCategory = (category: "road" | "water"): Project[] => {
+export const getProjectsByCategory = (category: ProjectCategory): Project[] => {
   return projects.filter((project) => project.category === category);
 };

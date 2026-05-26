@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import SmartImage from "@/components/SmartImage";
-import roadImage from "@/assets/road4.jpeg";
+import roadImage from "@/assets/service_1.jpeg";
 import waterImage from "@/assets/water2.jpg";
+import wasteWaterImage from "@/assets/waste-water.jpeg";
 import servicesHeader from "@/assets/headers/services-header.jpg";
 
 const ServicesPage = () => {
@@ -75,6 +76,39 @@ const ServicesPage = () => {
     },
   ];
 
+  const wasteWaterServices = [
+    {
+      title: "Treatment Works Upgrades",
+      description: "Civil upgrades for municipal wastewater treatment works to improve capacity and reliability.",
+      features: ["Inlet works", "Process structures", "Concrete tanks", "Site infrastructure"],
+    },
+    {
+      title: "Wastewater Treatment Plants",
+      description: "Construction support for treatment facilities serving municipal and industrial sanitation needs.",
+      features: ["Treatment basins", "Control buildings", "Access roads", "Drainage works"],
+    },
+    {
+      title: "Refurbishment Works",
+      description: "Rehabilitation of aging wastewater assets to improve environmental compliance and service delivery.",
+      features: ["Structural repairs", "Equipment bases", "Pipework support", "Operational upgrades"],
+    },
+    {
+      title: "Inlet Works Infrastructure",
+      description: "Critical inlet works construction and upgrades for improved flow handling and screening.",
+      features: ["Channels", "Screens", "Chambers", "Bypass structures"],
+    },
+    {
+      title: "Civil & Mechanical Support",
+      description: "Civil works that support mechanical treatment systems, pumps, valves, and plant operations.",
+      features: ["Pump bases", "Valve chambers", "Platforms", "Service trenches"],
+    },
+    {
+      title: "Environmental Compliance Works",
+      description: "Infrastructure improvements that support sustainable wastewater management and compliance targets.",
+      features: ["Containment works", "Effluent structures", "Safe access", "Long-term durability"],
+    },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -92,27 +126,37 @@ const ServicesPage = () => {
     <main>
       <PageHero
         title="Our Services"
-        subtitle="Comprehensive civil engineering solutions for road construction and water infrastructure projects."
+        subtitle="Comprehensive civil engineering solutions for road construction, water infrastructure, and wastewater treatment works."
         backgroundImage={servicesHeader}
       />
 
       {/* Road Construction Section */}
-      <section className="section-padding">
+      <section id="road-construction" className="py-14 md:py-20 lg:py-24 scroll-mt-24">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-4">
-                <Construction className="h-5 w-5 text-primary" />
+              <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 py-1.5 mb-4">
+                <Construction className="h-4 w-4 text-primary" />
                 <span className="text-sm font-medium text-primary">Road Construction</span>
               </div>
-              <h2 className="heading-lg text-foreground mb-6">
-                Road Construction & Rehabilitation
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight text-foreground mb-4">
+                Road Construction
               </h2>
-              <p className="body-lg mb-6">
-                From new road construction to rehabilitation and maintenance, we deliver
-                quality road infrastructure that serves communities for decades. Our
-                experienced team handles projects of all sizes, from township roads to
-                provincial highways.
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
+                We specialize in comprehensive road construction and rehabilitation services,
+                delivering durable transport infrastructure solutions for municipalities,
+                government departments, and private sector clients across South Africa.
+                Our expertise includes new gravel and asphalt road construction,
+                road resurfacing, overlays, bitumen seals, concrete roads, pothole
+                repairs, patching, and preventative maintenance works.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
+                Our services also cover earthworks and layerworks, including excavation,
+                filling, compaction, and placement of G5–G7 materials, together with
+                stormwater drainage systems such as culverts, channels, catch pits,
+                and outfall structures. In addition, we undertake kerbing, paving,
+                sidewalks, road markings, and ancillary civil works to ensure safe,
+                sustainable, and high-quality road infrastructure delivery.
               </p>
               <Button asChild>
                 <Link to="/projects?category=road">
@@ -125,8 +169,8 @@ const ServicesPage = () => {
               <SmartImage
                 src={roadImage}
                 alt="Road Construction"
-                containerClassName="rounded-2xl shadow-card w-full"
-                className="w-full"
+                containerClassName="rounded-xl shadow-card w-full max-h-[360px]"
+                className="w-full max-h-[360px] object-cover"
               />
             </div>
           </div>
@@ -136,17 +180,17 @@ const ServicesPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
           >
             {roadServices.map((service) => (
               <motion.div
                 key={service.title}
                 variants={itemVariants}
-                className="bg-card border border-border rounded-xl p-6 hover:shadow-card transition-shadow"
+                className="bg-card border border-border rounded-lg p-5 hover:shadow-card transition-shadow"
               >
-                <h3 className="heading-md text-foreground mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                <ul className="space-y-2">
+                <h3 className="text-lg md:text-xl font-semibold leading-tight text-foreground mb-2">{service.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
+                <ul className="space-y-1.5">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
@@ -161,26 +205,26 @@ const ServicesPage = () => {
       </section>
 
       {/* Water Infrastructure Section */}
-      <section className="section-padding bg-secondary">
+      <section id="water-sewer" className="py-14 md:py-20 lg:py-24 bg-secondary scroll-mt-24">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-12">
             <div className="order-2 lg:order-1">
               <SmartImage
                 src={waterImage}
                 alt="Water Infrastructure"
-                containerClassName="rounded-2xl shadow-card w-full"
-                className="w-full"
+                containerClassName="rounded-xl shadow-card w-full max-h-[360px]"
+                className="w-full max-h-[360px] object-cover"
               />
             </div>
             <div className="order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-4">
-                <Droplets className="h-5 w-5 text-primary" />
+              <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 py-1.5 mb-4">
+                <Droplets className="h-4 w-4 text-primary" />
                 <span className="text-sm font-medium text-primary">Water & Sewer</span>
               </div>
-              <h2 className="heading-lg text-foreground mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight text-foreground mb-4">
                 Water & Sewer Infrastructure
               </h2>
-              <p className="body-lg mb-6">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
                 We specialize in the installation and rehabilitation of water and sewer
                 infrastructure, from bulk pipelines to reticulation networks. Our work
                 ensures reliable water supply and sanitation for communities across
@@ -200,17 +244,81 @@ const ServicesPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
           >
             {waterServices.map((service) => (
               <motion.div
                 key={service.title}
                 variants={itemVariants}
-                className="bg-card border border-border rounded-xl p-6 hover:shadow-card transition-shadow"
+                className="bg-card border border-border rounded-lg p-5 hover:shadow-card transition-shadow"
               >
-                <h3 className="heading-md text-foreground mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                <ul className="space-y-2">
+                <h3 className="text-lg md:text-xl font-semibold leading-tight text-foreground mb-2">{service.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
+                <ul className="space-y-1.5">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Waste Water Treatment Section */}
+      <section id="waste-water-treatment" className="py-14 md:py-20 lg:py-24 scroll-mt-24">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 py-1.5 mb-4">
+                <Droplets className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium text-primary">Waste Water Treatment Works</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight text-foreground mb-4">
+                Waste Water Treatment Works
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
+                We deliver wastewater treatment works construction, upgrades, and
+                refurbishment support for municipal sanitation infrastructure. Our
+                work helps improve treatment capacity, environmental compliance,
+                and long-term service reliability.
+              </p>
+              <Button asChild>
+                <Link to="/projects?category=waste-water-treatment">
+                  View Treatment Works Projects
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="relative">
+              <SmartImage
+                src={wasteWaterImage}
+                alt="Waste Water Treatment Works"
+                containerClassName="rounded-xl shadow-card w-full max-h-[360px]"
+                className="w-full max-h-[360px] object-cover"
+              />
+            </div>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          >
+            {wasteWaterServices.map((service) => (
+              <motion.div
+                key={service.title}
+                variants={itemVariants}
+                className="bg-card border border-border rounded-lg p-5 hover:shadow-card transition-shadow"
+              >
+                <h3 className="text-lg md:text-xl font-semibold leading-tight text-foreground mb-2">{service.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
+                <ul className="space-y-1.5">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
@@ -225,12 +333,12 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-accent text-accent-foreground">
+      <section className="py-14 md:py-20 lg:py-24 bg-accent text-accent-foreground">
         <div className="container-wide text-center">
-          <h2 className="heading-lg text-accent-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold leading-tight text-accent-foreground mb-4">
             Ready to Start Your Project?
           </h2>
-          <p className="text-accent-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-accent-foreground/80 text-base md:text-lg mb-7 max-w-2xl mx-auto">
             Contact us today to discuss your civil engineering requirements and get a
             competitive quote from our experienced team.
           </p>
