@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import SmartImage from "@/components/SmartImage";
 import roadImage from "@/assets/service_1.jpeg";
-import waterImage from "@/assets/water2.jpg";
-import wasteWaterImage from "@/assets/waste-water.jpeg";
+import waterImage from "@/assets/waste.jpeg";
+import wasteWaterImage from "@/assets/wasted.jpeg";
 import servicesHeader from "@/assets/headers/services-header.jpg";
 
 const ServicesPage = () => {
@@ -225,10 +225,17 @@ const ServicesPage = () => {
                 Water & Sewer Infrastructure
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
-                We specialize in the installation and rehabilitation of water and sewer
-                infrastructure, from bulk pipelines to reticulation networks. Our work
-                ensures reliable water supply and sanitation for communities across
-                South Africa.
+                We provide comprehensive water and sewer infrastructure solutions designed to
+                support sustainable service delivery and community development. Our services
+                include water and sewer pipeline installation, bulk pipeline systems, reticulation
+                networks, manholes, chambers, pump stations, and associated civil infrastructure works.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
+                With experience in municipal and infrastructure projects, we undertake the construction,
+                maintenance, upgrading, and rehabilitation of water and sewer systems in accordance with
+                industry standards and project specifications. Our team is committed to delivering reliable,
+                efficient, and high-quality infrastructure solutions that improve sanitation, water distribution,
+                and long-term operational performance.
               </p>
               <Button asChild>
                 <Link to="/projects?category=water">
@@ -281,10 +288,15 @@ const ServicesPage = () => {
                 Waste Water Treatment Works
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
-                We deliver wastewater treatment works construction, upgrades, and
-                refurbishment support for municipal sanitation infrastructure. Our
-                work helps improve treatment capacity, environmental compliance,
-                and long-term service reliability.
+                We specialize in the construction, refurbishment, and upgrading of wastewater treatment
+                works and water sanitation infrastructure. Our services include civil, mechanical, and
+                pipeline infrastructure works associated with treatment plants, pump stations,
+                reticulation systems, and bulk sewer networks.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
+                With a strong focus on quality, environmental compliance, and sustainable infrastructure
+                development, we deliver reliable wastewater solutions that improve sanitation services,
+                operational efficiency, and long-term community development across South Africa.
               </p>
               <Button asChild>
                 <Link to="/projects?category=waste-water-treatment">
